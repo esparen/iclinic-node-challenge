@@ -44,6 +44,13 @@
               "message": "patients service not available",
               "code": "06"
             }
+          },
+          "unexpected_error" : {
+            "error": {
+              "message": "Unexpected error. More details attached.",
+              "original_error" :"%error%",
+              "code": "99"
+            }
           }
         }
       }

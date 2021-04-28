@@ -1,15 +1,17 @@
-{
-    "id": "1",
-    "name": "Eduardo Wiza MD",
-    "crm": "de7099b8-f56d-480e-ab6d-6257773063e6"
-}
-{
-    "id": "2",
-    "name": "Henderson Weber",
-    "crm": "b5e50f76-e71b-469d-91e3-b2f911901e7c"
-}
+[
     {
-    "id": "3",
-    "name": "Mariela King",
-    "crm": "ffab6d89-6508-4e9e-9665-78af78c759e0"
-}
+        "id": "1",
+        "name": "Eduardo Wiza MD",
+        "crm": "de7099b8-f56d-480e-ab6d-6257773063e6"
+    },
+    {
+        "id": "2",
+        "name": "Henderson Weber",
+        "crm": "b5e50f76-e71b-469d-91e3-b2f911901e7c"
+    },
+    {
+        "id": "3",
+        "name": "Mariela King",
+        "crm": "ffab6d89-6508-4e9e-9665-78af78c759e0"
+    }
+]

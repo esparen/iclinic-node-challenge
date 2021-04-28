@@ -5,7 +5,7 @@
     "external" : {
         "api": {
             "physicians": {
-                "base_url" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
                 "path" : "/physicians/:id",
                 "default_headers": { 
                     "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJzZXJ2aWNlIjoicGh5c2ljaWFucyJ9.Ei58MtFFGBK4uzpxwnzLxG0Ljdd-NQKVcOXIS4UYJtA"
@@ -15,7 +15,7 @@
                 "cache_ttl" : 172800000
             },
             "clinics": {
-                "base_url" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
                 "path" : "/clinics/:id",
                 "default_headers": { 
                     "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJzZXJ2aWNlIjoiY2xpbmljcyJ9.r3w8KS4LfkKqZhOUK8YnIdLhVGJEqnReSClLCMBIJRQ"
@@ -25,7 +25,7 @@
                 "cache_ttl" : 259200000 
             },
             "patients": {
-                "base_url" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
                 "path" : "/patients/:id",
                 "default_headers": { 
                     "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJzZXJ2aWNlIjoicGF0aWVudHMifQ.Pr6Z58GzNRtjX8Y09hEBzl7dluxsGiaxGlfzdaphzVU"
@@ -35,7 +35,7 @@
                 "cache_ttl" : 43200000
             },
             "metrics": {
-                "base_url" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
                 "path" : "/metrics",
                 "default_headers": { 
                     "Authorization" : "Bearer SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
