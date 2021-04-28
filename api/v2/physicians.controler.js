@@ -11,7 +11,7 @@ let externalAPI = config.get('external.api.physicians');
  * @param {number} physicianId the id of the physician
  * @returns an object with physician's data or an error
  */
- async function getPhysician(physicianId) {
+async function getPhysician(physicianId) {
     let response = await requestPhysiciansAPI(physicianId);
     return response;
 }
@@ -69,11 +69,16 @@ async function formatPhysiciansApiErrors(error) {
         apiErrorResponse.data = defaultMessages.api.v2.prescription.errors.physicians_service_not_available;
         apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code;
     } else if (error.response) {
-
-        apiErrorResponse.status = error.response.status; //we assume that if there was an answer, we should inform it on the answer
         //status code 404 (not found) handling
-        if (error.response.status == 404)
+        if (error.response.status == 404) {
             apiErrorResponse.data = defaultMessages.api.v2.prescription.errors.physician_not_found;
+            apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.physician_not_found.error.code;
+        }
+        else if (error.response.status == 429) {
+            //too many requests
+            apiErrorResponse.data = defaultMessages.api.v2.prescription.errors.physicians_service_not_available;
+            apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code;
+        }
     }
     return apiErrorResponse;
 }

@@ -10,12 +10,13 @@ describe('physicians.controler', () => {
             it(`should return an json with status 200. sample: ${JSON.stringify(mockedPhysician)}`, async () => {
                 const res = await physiciansControler.getPhysician(mockedPhysician.id);
                 expect(res).toHaveProperty('status', 200);
+                expect(res.data).toHaveProperty('id', mockedPhysician.id);
             });
         })
 
-        it(`should return and json with status 404 and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found)}`, async () => {
+        it(`should return and json with status ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found.error.code)} and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found)}`, async () => {
             const res = await physiciansControler.getPhysician(5646465);
-            expect(res).toHaveProperty('status', 404);
+            expect(res).toHaveProperty('status', defaultMessages.api.v2.prescription.errors.physician_not_found.error.code);
             expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physician_not_found);
         });
     });
@@ -25,12 +26,13 @@ describe('physicians.controler', () => {
             it(`should return an json with status 200. sample: ${JSON.stringify(mockedPhysician)}`, async () => {
                 const res = await physiciansControler.requestPhysiciansAPI(mockedPhysician.id);
                 expect(res).toHaveProperty('status', 200);
+                expect(res.data).toHaveProperty('id', mockedPhysician.id);
             });
         })
 
-        it(`should return and json with status 404 and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found)}`, async () => {
+        it(`should return and json with status ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found.error.code)} and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found)}`, async () => {
             const res = await physiciansControler.requestPhysiciansAPI(5646465);
-            expect(res).toHaveProperty('status', 404);
+            expect(res).toHaveProperty('status', defaultMessages.api.v2.prescription.errors.physician_not_found.error.code);
             expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physician_not_found);
         });
 
