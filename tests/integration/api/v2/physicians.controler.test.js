@@ -4,30 +4,34 @@ const defaultMessages = require('../../../../config/messages.json');
 const config = require('config');
 let externalAPI = config.get('external.api.physicians');
 
-describe('physicians.controler', () => {    
+describe('physicians.controler', () => {
     describe('getPhysician', () => {
-        it('should return an json with status 200', async () => {
-            const res = await physiciansControler.getPhysician(1);
-            expect(res).toHaveProperty('status',200);
-        });
+        mockPhysicians.forEach(mockedPhysician => {
+            it(`should return an json with status 200. sample: ${JSON.stringify(mockedPhysician)}`, async () => {
+                const res = await physiciansControler.getPhysician(mockedPhysician.id);
+                expect(res).toHaveProperty('status', 200);
+            });
+        })
 
         it(`should return and json with status 404 and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found)}`, async () => {
             const res = await physiciansControler.getPhysician(5646465);
             expect(res).toHaveProperty('status', 404);
-            expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physician_not_found); 
+            expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physician_not_found);
         });
     });
 
     describe('requestPhysiciansAPI', () => {
-        it('should return an json with status 200', async () => {
-            const res = await physiciansControler.requestPhysiciansAPI(1);
-            expect(res).toHaveProperty('status',200);
-        });
+        mockPhysicians.forEach(mockedPhysician => {
+            it(`should return an json with status 200. sample: ${JSON.stringify(mockedPhysician)}`, async () => {
+                const res = await physiciansControler.requestPhysiciansAPI(mockedPhysician.id);
+                expect(res).toHaveProperty('status', 200);
+            });
+        })
 
         it(`should return and json with status 404 and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found)}`, async () => {
             const res = await physiciansControler.requestPhysiciansAPI(5646465);
             expect(res).toHaveProperty('status', 404);
-            expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physician_not_found); 
+            expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physician_not_found);
         });
 
         it(`should return and json with status ${defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code}  and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physicians_service_not_available)}`, async () => {
@@ -40,7 +44,7 @@ describe('physicians.controler', () => {
             }
             const res = await physiciansControler.requestPhysiciansAPI(5646465, customAxiosConfig);
             expect(res).toHaveProperty('status', defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code);
-            expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physicians_service_not_available); 
+            expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physicians_service_not_available);
         });
     });
 });
