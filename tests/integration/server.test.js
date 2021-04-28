@@ -4,7 +4,7 @@ let server;
 
 describe('/', () => {
     beforeEach(() => { server = require('../../server') });
-    afterEach(() => { server.close(); });
+    afterEach( async () => { await server.close(); });
     
     describe('GET /', () => {
         it('should return "alive"', async() => {

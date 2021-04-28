@@ -31,12 +31,5 @@ describe('api/v2/index', () => {
             expect(JSON.parse(res.text)).toEqual(messages.api.v2.prescription.errors.invalid_or_incomplete_request_url);            
             expect(JSON.parse(res.text)).toMatchObject(messages.api.v2.prescription.errors.invalid_or_incomplete_request_url);            
         });
-
-        it('Method POST should status code 200 and "alive"', async () => {
-            const res = await request(server).post('/v2/prescriptions');
-            expect(res.status).toEqual(200);
-            expect(res.text).toEqual("alive");            
-        })
-
     } )
 })
