@@ -45,6 +45,18 @@
               "code": "06"
             }
           },
+          "clinic_not_found": {
+            "error": {
+              "message": "clinic not found",
+              "code": "07"
+            }
+          },
+          "clinics_service_not_available": {
+            "error": {
+              "message": "clinic service not available",
+              "code": "08"
+            }
+          },
           "unexpected_error" : {
             "error": {
               "message": "Unexpected error. More details attached.",
