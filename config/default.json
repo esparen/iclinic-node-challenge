@@ -1,5 +1,49 @@
 {
     "db":"mongodb://localhost/prescriptions",
     "port": "3000",
-    "host": "0.0.0.0"
+    "host": "0.0.0.0",
+    "external" : {
+        "api": {
+            "physicians": {
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
+                "path" : "/physicians/:id",
+                "default_headers": { 
+                    "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJzZXJ2aWNlIjoicGh5c2ljaWFucyJ9.Ei58MtFFGBK4uzpxwnzLxG0Ljdd-NQKVcOXIS4UYJtA"
+                },
+                "retries": 2,
+                "timeout": 4000,
+                "cache_ttl" : 172800000
+            },
+            "clinics": {
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
+                "path" : "/clinics/:id",
+                "default_headers": { 
+                    "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJzZXJ2aWNlIjoiY2xpbmljcyJ9.r3w8KS4LfkKqZhOUK8YnIdLhVGJEqnReSClLCMBIJRQ"
+                },
+                "retries": 3,
+                "timeout": 5000,
+                "cache_ttl" : 259200000 
+            },
+            "patients": {
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
+                "path" : "/patients/:id",
+                "default_headers": { 
+                    "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJzZXJ2aWNlIjoicGF0aWVudHMifQ.Pr6Z58GzNRtjX8Y09hEBzl7dluxsGiaxGlfzdaphzVU"
+                },
+                "retries": 2,
+                "timeout": 3000,
+                "cache_ttl" : 43200000
+            },
+            "metrics": {
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
+                "path" : "/metrics",
+                "default_headers": { 
+                    "Authorization" : "Bearer SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                },
+                "retries": 5,
+                "timeout": 6000
+            }
+
+        }
+    }
 }

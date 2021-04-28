@@ -1,12 +1,10 @@
-{
-    "id": "1",
-    "name": "Dr. Kennith Bednar"
-}
-{
-    "id": "2",
-    "name": "Marjorie Dickens"
-}
-{
-    "id": "3",
-    "name": "Hellen Hettinger"
-}
+[
+    {
+        "id": "1",
+        "name": "Dr. Kennith Bednar"
+    },
+    {
+        "id": "2",
+        "name": "Marjorie Dickens"
+    }
+]

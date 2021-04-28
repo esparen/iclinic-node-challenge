@@ -1,18 +1,14 @@
-{
-    "id": "1",
-    "name": "Walter Ziemann",
-    "email": "Muriel4@gmail.com",
-    "phone": "1-853-068-7209 x379"
-}
+[
     {
-    "id": "2",
-    "name": "Lowell Ondricka",
-    "email": "Lauryn_Romaguera58@gmail.com",
-    "phone": "(432) 643-4993 x478"
-}
+        "id": "1",
+        "name": "Walter Ziemann",
+        "email": "Muriel4@gmail.com",
+        "phone": "1-853-068-7209 x379"
+    },
     {
-    "id": "3",
-    "name": "Zoe Brekke",
-    "email": "Frank_Krajcik58@gmail.com",
-    "phone": "(498) 447-9074"
-}
+        "id": "2",
+        "name": "Lowell Ondricka",
+        "email": "Lauryn_Romaguera58@gmail.com",
+        "phone": "(432) 643-4993 x478"
+    }
+]

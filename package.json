@@ -1,6 +1,6 @@
 {
   "name": "iclinic-challenge",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "iClinic Challenge - RESTful API for prescriptions",
   "main": "server.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/esparen/iclinic-node-challenge#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "axios-retry": "^3.1.9",
     "config": "^3.3.6",
     "express": "^4.17.1",
     "joi": "^17.4.0",
