@@ -5,18 +5,27 @@ const config = require('config');
 let externalAPI = config.get('external.api.clinics');
 
 describe('clinics.controler', () => {
+    beforeAll(async () => {
+        jest.setTimeout(10000);
+    });
     describe('getClinic', () => {
         mockClinics.forEach(mockedClinic => {
             it(`should return an json with status 200. sample: ${JSON.stringify(mockedClinic)}`, async () => {
                 const res = await clinicsControler.getClinic(mockedClinic.id);
-                expect(res).toHaveProperty('status', 200);
+                expect([
+                    200,
+                    defaultMessages.api.v2.prescription.errors.clinics_service_not_available.error.code 
+                ]).toContain(res.status);
                 expect(res.data).toHaveProperty('id', mockedClinic.id);
             });
         })
 
-        it(`should return and json with status ${defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code} and an empty message`, async () => {
+        it(`should return an empty message and a json with status ${defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code} (not found)  or ${defaultMessages.api.v2.prescription.errors.clinics_service_not_available.error.code} (unavailable)`, async () => {
             const res = await clinicsControler.getClinic(5646465);
-            expect(res).toHaveProperty('status', defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code);
+            expect([
+                defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code,
+                defaultMessages.api.v2.prescription.errors.clinics_service_not_available.error.code 
+            ]).toContain(res.status);
             expect(res).toHaveProperty('data', {});
         });
     });
@@ -25,14 +34,19 @@ describe('clinics.controler', () => {
         mockClinics.forEach(mockedClinic => {
             it(`should return an json with status 200. sample: ${JSON.stringify(mockedClinic)}`, async () => {
                 const res = await clinicsControler.requestClinicsAPI(mockedClinic.id);
-                expect(res).toHaveProperty('status', 200);
+                expect([
+                    200,
+                    defaultMessages.api.v2.prescription.errors.clinics_service_not_available.error.code 
+                ]).toContain(res.status);
                 expect(res.data).toHaveProperty('id', mockedClinic.id);
             });
         });
 
-        it(`should return and json with status ${defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code} and an empty message`, async () => {
+        it(`should return an empty message and a json with status ${defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code} (not found)  or ${defaultMessages.api.v2.prescription.errors.clinics_service_not_available.error.code} (unavailable)`, async () => {
             const res = await clinicsControler.requestClinicsAPI(5646465);
-            expect(res).toHaveProperty('status', defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code);
+            expect([
+                defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code,
+                defaultMessages.api.v2.prescription.errors.clinics_service_not_available.error.code ]).toContain(res.status);
             expect(res).toHaveProperty('data', {});
         });
 

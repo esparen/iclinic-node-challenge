@@ -5,6 +5,9 @@ const config = require('config');
 let externalAPI = config.get('external.api.physicians');
 
 describe('physicians.controler', () => {
+    beforeAll(async () => {
+        jest.setTimeout(10000);
+    });
     describe('getPhysician', () => {
         mockPhysicians.forEach(mockedPhysician => {
             it(`should return an json with status 200. sample: ${JSON.stringify(mockedPhysician)}`, async () => {
@@ -14,9 +17,12 @@ describe('physicians.controler', () => {
             });
         })
 
-        it(`should return and json with status ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found.error.code)} and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found)}`, async () => {
+        it(`should return an empty message and a json with status ${defaultMessages.api.v2.prescription.errors.physician_not_found.error.code} (not found)  or ${defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code} (unavailable)`, async () => {
             const res = await physiciansControler.getPhysician(5646465);
-            expect(res).toHaveProperty('status', defaultMessages.api.v2.prescription.errors.physician_not_found.error.code);
+            expect([
+                defaultMessages.api.v2.prescription.errors.physician_not_found.error.code,
+                defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code 
+            ]).toContain(res.status);
             expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physician_not_found);
         });
     });
@@ -25,13 +31,20 @@ describe('physicians.controler', () => {
         mockPhysicians.forEach(mockedPhysician => {
             it(`should return an json with status 200. sample: ${JSON.stringify(mockedPhysician)}`, async () => {
                 const res = await physiciansControler.requestPhysiciansAPI(mockedPhysician.id);
-                expect(res).toHaveProperty('status', 200);
+                expect([
+                    200,
+                    defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code ])
+                    .toContain(res.status);
                 expect(res.data).toHaveProperty('id', mockedPhysician.id);
             });
         })
 
-        it(`should return and json with status ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found.error.code)} and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.physician_not_found)}`, async () => {
+        it(`should return an empty message and a json with status ${defaultMessages.api.v2.prescription.errors.physician_not_found.error.code} (not found)  or ${defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code} (unavailable)`, async () => {
             const res = await physiciansControler.requestPhysiciansAPI(5646465);
+            expect([
+                defaultMessages.api.v2.prescription.errors.physician_not_found.error.code,
+                defaultMessages.api.v2.prescription.errors.physicians_service_not_available.error.code 
+            ]).toContain(res.status);
             expect(res).toHaveProperty('status', defaultMessages.api.v2.prescription.errors.physician_not_found.error.code);
             expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.physician_not_found);
         });

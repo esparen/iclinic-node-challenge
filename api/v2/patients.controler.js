@@ -1,4 +1,5 @@
 const axios = require('axios');
+const axiosRetry = require('axios-retry');
 const config = require('config');
 const defaultMessages = require('../../config/messages.json');
 
@@ -11,7 +12,7 @@ let externalAPI = config.get('external.api.patients');
  * @param {number} patientId the id of the patient
  * @returns an object with patient's data or an error
  */
- async function getPatient(patientId) {
+async function getPatient(patientId) {
     let response = await requestPatientsAPI(patientId);
     return response;
 }
@@ -37,6 +38,18 @@ async function requestPatientsAPI(patientId, customAxiosConfig = null) {
 
     let axiosResponse;
     let response = { status: 0, found: false, data: {} }
+
+    //handling the request retries
+    axiosRetry(axios, {
+        retries: externalAPI.retries,
+        retryDelay: (retryCount) => {
+            return retryCount * 10; // time interval between retries
+        },
+        retryCondition: (error) => {
+            //if (error.response) console.log(error.response.status, error.response.statusText);
+            if (error) return true;
+        }
+    });
     try {
         axiosResponse = await axios(axiosConfig);
         response.status = 200;
