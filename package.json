@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "iClinic Challenge - RESTful API for prescriptions",
   "main": "server.js",
-  "jest": {
-    "verbose": true,
-    "testEnvironment": "node"
-  },
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js",
     "test": "jest --testEnvironment=node --watchAll --verbose --detectOpenHandles"
   },
   "repository": {
@@ -22,6 +19,7 @@
   },
   "homepage": "https://github.com/esparen/iclinic-node-challenge#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "config": "^3.3.6",
     "express": "^4.17.1",
     "mongoose": "^5.12.5",
