@@ -7,6 +7,7 @@ let externalAPI = config.get('external.api.clinics');
 
 /**
  * @name getClinic 
+ * @description retrieve the clinic data from an external service set by the enviroment configuration
  * @param {number} clinicId the id of the clinic
  * @returns an object with clinic's data or an error
  */

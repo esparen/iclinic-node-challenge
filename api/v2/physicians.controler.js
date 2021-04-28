@@ -6,7 +6,8 @@ const defaultMessages = require('../../config/messages.json');
 let externalAPI = config.get('external.api.physicians');
 
 /**
- * @name getPhysician Physician
+ * @name getPhysician 
+ * @description retrieve the physician data from an external service set by the enviroment configuration
  * @param {number} physicianId the id of the physician
  * @returns an object with physician's data or an error
  */
