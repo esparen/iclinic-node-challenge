@@ -35,15 +35,19 @@ const Prescription = mongoose.model('Prescription', prescriptionSchema);
  * @param {JSON} prescription the JSON object with the input data for the collection
  * @returns {Object} contaning the result of the validation
  */
-function validatePrescription(prescription) {
-    const schema = {
+async function validatePrescription(prescription) {
+    const clinicSchema = Joi.object({ id: Joi.number()})
+    const physicianSchema = Joi.object({ id: Joi.number().required()}).required();
+    const patientSchema = Joi.object({ id: Joi.number().required()}).required();
+    
+    const schema = Joi.object({
         text: Joi.string().min(5).required(),
-        clinic: { id: Joi.number() },
-        physician: { id: Joi.number().required() },
-        patient: { id: Joi.number().required() }
-    };
+        clinic: clinicSchema,
+        physician: physicianSchema,
+        patient: patientSchema
+    });
 
-    return Joi.validate(prescription, schema);
+    return schema.validate(prescription);
 }
 
 exports.Prescription = Prescription;

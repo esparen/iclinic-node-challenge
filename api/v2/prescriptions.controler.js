@@ -8,12 +8,16 @@ const {Prescription, validate} = require('../../db/models/prescription')
  * @param {Object} res 
  */
 exports.handleNewPrescription = async (req, res) => {
-    
     const { text, clinic, patient, physician } = req.body;
     
-    let response = await insertPrescription(text, clinic, patient, physician);
-    
-    res.status(200).send(response);
+    let prescriptionValidation = await validate({ text, clinic, patient, physician });    
+    if (prescriptionValidation.error) {
+        res.status(400).send({error: prescriptionValidation.error.details[0].message});
+    }
+    else {
+        let response = await insertPrescription(text, clinic, patient, physician);
+        res.status(200).send(response);
+    }
 }
 
 /**
