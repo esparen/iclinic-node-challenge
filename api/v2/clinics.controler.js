@@ -71,10 +71,16 @@ async function formatClinicApiErrors(error) {
         apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.clinics_service_not_available.error.code;
     } else if (error.response) {
         apiErrorResponse.data = {}
-        apiErrorResponse.status = error.response.status; 
         //clinics don't have error handling for 404 - not found (yet). We pass empty data, but with the proper internal status code
-        if (error.response.status == 404)
+        if (error.response.status == 404) {
             apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.clinic_not_found.error.code;
+        } else if (error.response.status == 429) {
+            //too many requests
+            apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.clinics_service_not_available.error.code;
+        }
+        
+        
+        
     }
     return apiErrorResponse;
 }

@@ -10,6 +10,7 @@ describe('clinics.controler', () => {
             it(`should return an json with status 200. sample: ${JSON.stringify(mockedClinic)}`, async () => {
                 const res = await clinicsControler.getClinic(mockedClinic.id);
                 expect(res).toHaveProperty('status', 200);
+                expect(res.data).toHaveProperty('id', mockedClinic.id);
             });
         })
 
@@ -25,6 +26,7 @@ describe('clinics.controler', () => {
             it(`should return an json with status 200. sample: ${JSON.stringify(mockedClinic)}`, async () => {
                 const res = await clinicsControler.requestClinicsAPI(mockedClinic.id);
                 expect(res).toHaveProperty('status', 200);
+                expect(res.data).toHaveProperty('id', mockedClinic.id);
             });
         });
 
