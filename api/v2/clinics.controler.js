@@ -2,18 +2,26 @@ const axios = require('axios');
 const axiosRetry  = require('axios-retry');
 const config = require('config');
 const defaultMessages = require('../../config/messages.json');
-
+const { Cache } = require('./services/cache.service');
 
 let externalAPI = config.get('external.api.clinics');
+const clinicsCache = new Cache(externalAPI.cache_ttl);
 
 /**
  * @name getClinic 
- * @description retrieve the clinic data from an external service set by the enviroment configuration
+ * @description retrieves the clinic data from the chache or an external service set by the enviroment configuration
  * @param {number} clinicId the id of the clinic
  * @returns an object with clinic's data or an error
  */
  async function getClinic(clinicId) {
-    let response = await requestClinicsAPI(clinicId);
+    let response;
+    const cacheKey = `getClinic_${clinicId}`;
+    let cacheResponse = await clinicsCache.get(cacheKey);
+    if (cacheResponse) response = cacheResponse;
+    else {
+        response = await requestClinicsAPI(clinicId);
+        clinicsCache.set(cacheKey, response);
+    }
     return response;
 }
 

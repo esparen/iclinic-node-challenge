@@ -12,7 +12,7 @@
                 },
                 "retries": 2,
                 "timeout": 4000,
-                "cache_ttl" : 172800000
+                "cache_ttl" : 172800
             },
             "clinics": {
                 "base_url" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
@@ -22,7 +22,7 @@
                 },
                 "retries": 3,
                 "timeout": 5000,
-                "cache_ttl" : 259200000 
+                "cache_ttl" : 259200
             },
             "patients": {
                 "base_url" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
@@ -32,7 +32,7 @@
                 },
                 "retries": 2,
                 "timeout": 3000,
-                "cache_ttl" : 43200000
+                "cache_ttl" : 43200
             },
             "metrics": {
                 "base_url" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
@@ -40,7 +40,7 @@
                 "default_headers": { 
                     "Authorization" : "Bearer SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
                 },
-                "retries": 5,
+                "retries": 2,
                 "timeout": 6000
             }
 
