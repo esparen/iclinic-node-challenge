@@ -1,6 +1,6 @@
 {
   "name": "iclinic-challenge",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "iClinic Challenge - RESTful API for prescriptions",
   "main": "server.js",
   "scripts": {
