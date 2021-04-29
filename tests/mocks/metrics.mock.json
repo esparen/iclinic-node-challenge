@@ -1,0 +1,39 @@
+{
+  "validMetrics": [
+    {
+      "clinic_id": 1,
+      "clinic_name": "Dr. Kennith Bedna",
+      "physician_id": 1,
+      "physician_name": "Eduardo Wiza MD",
+      "physician_crm": "de7099b8-f56d-480e-ab6d-6257773063e6",
+      "patient_id": 1,
+      "patient_name": "Walter Ziemann",
+      "patient_email": "Muriel4@gmail.com",
+      "patient_phone": "1-853-068-7209 x379"
+    },
+    {
+      "clinic_id": 2,
+      "clinic_name": "Marjorie Dickens",
+      "physician_id": 2,
+      "physician_name": "Henderson Weber",
+      "physician_crm": "b5e50f76-e71b-469d-91e3-b2f911901e7c",
+      "patient_id": 2,
+      "patient_name": "Lowell Ondricka",
+      "patient_email": "Lauryn_Romaguera58@gmail.com",
+      "patient_phone": "(432) 643-4993 x478"
+    }
+  ],
+  "invalidMetrics": [
+    {
+      "clinic_id": 2,
+      "clinic_name": "Marjorie Dickens"
+    },
+    {
+      "clinic_id": 3,
+      "clinic_name": "Hellen Hettinger",
+      "physician_id": 3,
+      "physician_name": "Mariela King",
+      "physician_crm": "ffab6d89-6508-4e9e-9665-78af78c759e0"
+    }
+  ]
+}

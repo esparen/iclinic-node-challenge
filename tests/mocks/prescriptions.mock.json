@@ -1,0 +1,116 @@
+{
+  "valid_prescriptions": [
+    {
+      "clinic": {
+        "id": 6544
+      },
+      "physician": {
+        "id": 1
+      },
+      "patient": {
+        "id": 1
+      },
+      "text": "Dipirona 1x ao dia"
+    },
+    {
+      "clinic": {
+        "id": 1
+      },
+      "physician": {
+        "id": 1
+      },
+      "patient": {
+        "id": 2
+      },
+      "text": "Antibiotico a cada 12 horas"
+    },
+    {
+      "clinic": {
+        "id": 1
+      },
+      "physician": {
+        "id": 2
+      },
+      "patient": {
+        "id": 3
+      },
+      "text": "Antifungico a cada 48h horas"
+    },
+    {
+      "clinic": {
+        "id": 2
+      },
+      "physician": {
+        "id": 1
+      },
+      "patient": {
+        "id": 4
+      },
+      "text": "Pomata tópica a cada 24h horas"
+    }
+  ],
+  "invalid_prescriptions": {
+    "no_text": {
+      "clinic": {
+        "id": 2
+      },
+      "physician": {
+        "id": 1
+      },
+      "patient": {
+        "id": 4
+      }
+    },
+    "no_patient": {
+      "clinic": {
+        "id": 2
+      },
+      "physician": {
+        "id": 1
+      },
+      "text": "Prescrição sem patient"
+    },
+    "no_physician": {
+      "clinic": {
+        "id": 2
+      },
+      "patient": {
+        "id": 4
+      },
+      "text": "Prescrição sem physician"
+    },
+    "no_physician_no_patient": {
+      "clinic": {
+        "id": 2
+      },
+      "text": "Prescrição sem clinic e physician"
+    },
+    "no_physician_no_patient_no_clinic": {
+      "text": "Prescrição sem clinic e physician e patient"
+    },
+    "physician_not_to_be_found": {
+      "clinic": {
+        "id": 2
+      },
+      "physician": {
+        "id": 16547800
+      },
+      "patient": {
+        "id": 4
+      },
+      "text": "Pomata tópica a cada 24h horas"
+    },
+    "patient_not_to_be_found": {
+      "clinic": {
+        "id": 2
+      },
+      "physician": {
+        "id": 1
+      },
+      "patient": {
+        "id": 1209472100
+      },
+      "text": "Pomata tópica a cada 24h horas"
+    }
+  }
+}

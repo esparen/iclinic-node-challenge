@@ -1,0 +1,71 @@
+{
+  "api": {
+    "v2": {
+      "prescription": {
+        "errors": {
+          "invalid_or_incomplete_request_url": {
+            "error": {
+              "message": "invalid or incomplete request url",
+              "code": "00"
+            }
+          },
+          "malformed_request": {
+            "error": {
+              "message": "malformed request",
+              "code": "01"
+            }
+          },
+          "physician_not_found": {
+            "error": {
+              "message": "physician not found",
+              "code": "02"
+            }
+          },
+          "patient_not_found": {
+            "error": {
+              "message": "patient not found",
+              "code": "03"
+            }
+          },
+          "metrics_service_not_available": {
+            "error": {
+              "message": "metrics service not available",
+              "code": "04"
+            }
+          },
+          "physicians_service_not_available": {
+            "error": {
+              "message": "physicians service not available",
+              "code": "05"
+            }
+          },
+          "patients_service_not_available": {
+            "error": {
+              "message": "patients service not available",
+              "code": "06"
+            }
+          },
+          "clinic_not_found": {
+            "error": {
+              "message": "clinic not found",
+              "code": "07"
+            }
+          },
+          "clinics_service_not_available": {
+            "error": {
+              "message": "clinic service not available",
+              "code": "08"
+            }
+          },
+          "unexpected_error" : {
+            "error": {
+              "message": "Unexpected error. More details attached.",
+              "original_error" :"%error%",
+              "code": "99"
+            }
+          }
+        }
+      }
+    }
+  }
+}
