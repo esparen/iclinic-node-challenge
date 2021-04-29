@@ -22,7 +22,7 @@ async function getPatient(patientId) {
     if (cacheResponse) response = cacheResponse;
     else {
         response = await requestPatientsAPI(patientId);
-        patientsCache.set(cacheKey, response);
+        if (response.success) patientsCache.set(cacheKey, response);
     }
     return response;
 }
@@ -63,7 +63,7 @@ async function requestPatientsAPI(patientId, customAxiosConfig = null) {
     try {
         axiosResponse = await axios(axiosConfig);
         response.status = 200;
-        response.found = true;
+        response.success = true;
         response.data = axiosResponse.data;
     } catch (error) {
         response = await formatPatientsApiErrors(error);
@@ -83,9 +83,9 @@ async function formatPatientsApiErrors(error) {
     //start assuming on unexpected and unhandled error.
     let apiErrorResponse = {};
     apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.unexpected_error.error.code;
-    apiErrorResponse.found = false;
+    apiErrorResponse.success = false;
     apiErrorResponse.data = defaultMessages.api.v2.prescription.errors.unexpected_error;
-    apiErrorResponse.data.original_error = error.message;
+    apiErrorResponse.data.original_error = "Patients service error:" + error.message;
 
     //timeout handling
     if (error.code == 'ECONNABORTED') {

@@ -43,7 +43,7 @@ async function postMetricsAPI(metricBody, customAxiosConfig = null) {
     axiosRetry(axios, {
         retries: externalAPI.retries,
         retryDelay: (retryCount) => {
-            return retryCount * 10; // time interval between retries
+            return retryCount * 20; // time interval between retries
         },
         retryCondition: (error) => {
             if (error) return true;
@@ -52,7 +52,7 @@ async function postMetricsAPI(metricBody, customAxiosConfig = null) {
     try {
         axiosResponse = await axios(axiosConfig);
         response.status = 200;
-        response.found = true;
+        response.success = true;
         response.data = axiosResponse.data;
     } catch (error) {
         response = await formatMetricsApiErrors(error);
@@ -72,9 +72,10 @@ async function formatMetricsApiErrors(error) {
     //start assuming on unexpected and unhandled error.
     let apiErrorResponse = {};
     apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.unexpected_error.error.code;
-    apiErrorResponse.found = false;
+    apiErrorResponse.success = false;
     apiErrorResponse.data = defaultMessages.api.v2.prescription.errors.unexpected_error;
-    apiErrorResponse.data.original_error = error.message;
+    apiErrorResponse.data.original_error = 'Metrics service error:' + error.message;
+    apiErrorResponse.data.error_raw = error;
 
     //timeout handling
     if (error.code == 'ECONNABORTED') {
@@ -95,7 +96,38 @@ async function formatMetricsApiErrors(error) {
     return apiErrorResponse;
 }
 
+
+/**
+ * @name formatMetricBody
+ * @description Composes the metrics service request body.
+ * @param {JSON} physicianData Data from the physician external service
+ * @param {JSON} patientData Data from the patient external service
+ * @param {JSON} clinicData Data from the clinic external service
+ * @returns {JSON} a valid body for the metrics API
+ */
+async function formatMetricBody(physicianData, patientData, clinicData) {
+    let response = {};
+    response = {
+        clinic_id: Number(clinicData.id),
+        physician_id: Number(physicianData.id),
+        physician_name: physicianData.name,
+        physician_crm: physicianData.crm,
+        patient_id: Number(patientData.id),
+        patient_name: patientData.name,
+        patient_email: patientData.email,
+        patient_phone: patientData.phone
+    };
+    if (clinicData.hasOwnProperty('name')) {
+        response = {
+            clinic_name: clinicData.name,
+            ...response
+        };
+    }
+    return response
+}
+
 module.exports = {
     postMetric,
-    postMetricsAPI
+    postMetricsAPI,
+    formatMetricBody
 }
