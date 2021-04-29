@@ -30,6 +30,9 @@ This is the repository for the iClinic challenge based on https://github.com/icl
   - Run command `npm run test` on the project root folder
 
 
+### JSDocs
+ - The package [docnator] was used to assemble the JSDocs in the `\docs` folder
+
 ___
 Atenciosamente,
 
@@ -39,3 +42,4 @@ Ederson Sparenberger.
 [//]: #
 
    [nodemon]: <https://www.npmjs.com/package/nodemon>
+   [docnator]: <https://github.com/agrotis-io/docnator>
