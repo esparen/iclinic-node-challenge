@@ -38,8 +38,7 @@
                 "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
                 "path" : "/metrics",
                 "default_headers": { 
-                    "Authorization" : "Bearer SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-                    "Content-Type": "application/json"
+                    "Authorization" : "Bearer SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
                 },
                 "retries": 5,
                 "timeout": 6000
