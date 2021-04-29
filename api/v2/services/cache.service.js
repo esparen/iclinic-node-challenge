@@ -8,9 +8,8 @@ class Cache {
 
     /**
      * @description retrieves the key on cache, and if its not present, stores it
-     * @param {*} key 
-     * @param {*} storeFunction 
-     * @returns the value for the key in the storeFuncton
+     * @param {*} key an identifier to look in the cache for a value
+     * @returns {*} the value for the key in the cache
      */
     get(key) {
         const value = this.cache.get(key);
@@ -20,11 +19,11 @@ class Cache {
     }
 
     /**
-     * @name
-     * @description
-     * @param {*} key 
-     * @param {*} value 
-     * @returns 
+     * @name set
+     * @description set an value to a key in the cache
+     * @param {*} key the key for the value
+     * @param {*} value the value of an key
+     * @returns {*} the value itself
      */
     set(key, value) {
         this.cache.set(key, value);
@@ -33,14 +32,17 @@ class Cache {
 
     /**
      * @name del
-     * @description
-     * @param {*} keys 
+     * @description remove a key from the cache
+     * @param {*} keys one or more keys
      */
     del(keys) {
         this.cache.del(keys);
     }
 
-
+    /**
+     * @name flush
+     * @description flushes all the keys in the cache
+     */
     flush() {
         this.cache.flushAll();
     }
