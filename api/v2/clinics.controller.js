@@ -20,7 +20,7 @@ const clinicsCache = new Cache(externalAPI.cache_ttl);
     if (cacheResponse) response = cacheResponse;
     else {
         response = await requestClinicsAPI(clinicId);
-        clinicsCache.set(cacheKey, response);
+        if (response.success) clinicsCache.set(cacheKey, response);
     }
     return response;
 }
@@ -60,7 +60,7 @@ async function requestClinicsAPI(clinicId, customAxiosConfig = null) {
     try {
         axiosResponse = await axios(axiosConfig);
         response.status = 200;
-        response.found = true;
+        response.success = true;
         response.data = axiosResponse.data;
     } catch (error) {
         response = await formatClinicApiErrors(error);
@@ -80,9 +80,9 @@ async function formatClinicApiErrors(error) {
     //start assuming on unexpected and unhandled error.
     let apiErrorResponse = {};
     apiErrorResponse.status = defaultMessages.api.v2.prescription.errors.unexpected_error.error.code;
-    apiErrorResponse.found = false;
+    apiErrorResponse.success = false;
     apiErrorResponse.data = defaultMessages.api.v2.prescription.errors.unexpected_error;
-    apiErrorResponse.data.original_error = error.message;
+    apiErrorResponse.data.original_error = "Clinics service error:" + error.message;
 
     //timeout handling
     if (error.code == 'ECONNABORTED') {

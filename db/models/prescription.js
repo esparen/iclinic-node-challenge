@@ -36,7 +36,7 @@ const Prescription = mongoose.model('Prescription', prescriptionSchema);
  * @returns {Object} contaning the result of the validation
  */
 async function validatePrescription(prescription) {
-    const clinicSchema = Joi.object({ id: Joi.number()})
+    const clinicSchema = Joi.object({ id: Joi.number().required()}).required();
     const physicianSchema = Joi.object({ id: Joi.number().required()}).required();
     const patientSchema = Joi.object({ id: Joi.number().required()}).required();
     

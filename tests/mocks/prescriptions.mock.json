@@ -2,7 +2,7 @@
   "valid_prescriptions": [
     {
       "clinic": {
-        "id": 1
+        "id": 6544
       },
       "physician": {
         "id": 1
@@ -87,6 +87,30 @@
     },
     "no_physician_no_patient_no_clinic": {
       "text": "Prescrição sem clinic e physician e patient"
+    },
+    "physician_not_to_be_found": {
+      "clinic": {
+        "id": 2
+      },
+      "physician": {
+        "id": 16547800
+      },
+      "patient": {
+        "id": 4
+      },
+      "text": "Pomata tópica a cada 24h horas"
+    },
+    "patient_not_to_be_found": {
+      "clinic": {
+        "id": 2
+      },
+      "physician": {
+        "id": 1
+      },
+      "patient": {
+        "id": 1209472100
+      },
+      "text": "Pomata tópica a cada 24h horas"
     }
   }
 }
