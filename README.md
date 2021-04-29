@@ -1,30 +1,41 @@
+# Prescriptions API
+## _An RESTful API for the iClinic Challenge_
+
+This is the repository for the iClinic challenge based on https://github.com/iclinic/iclinic-node-challenge.
 
 
-# Starting up
+# How to use
+
+### Node
+ - Make sure you have Node.js installed (this API was built in node `v10.16.2`)
 
 ### MongoDB
 
- - Garantir que o MongoDB esteja instalado (https://docs.mongodb.com/manual/installation/).
- - Garantir que a string de conexão apropriada esteja no arquivo /config/default.json no atributo "db" 
+ - Ensure that MongoDB is installed  (https://docs.mongodb.com/manual/installation/).
+ - Ensure that appropriate connection string is on propriety "db" of the files the file /config/default.json and /config/test.json
 
 
 ### API
 
-- Executar o comando npm run start na raiz da API 
-- Por padrão, o servidor irá iniciar na porta definida em `process.env.PORT` ou **3000**.
++ Install the node packages by running this command: `npm i` 
++ To start the API :
+    - Run the command `npm run start:watch to run` on project root folder ( uses [nodemon] to run, recommended) 
+    - or `npm run start:watch` on project root folder to use vanilla Node.
+- By default the API will run on the port difined in `process.env.PORT` or `3000`.
+- The url for the POST method is `HOST:PORT/v2/prescriptions` (i.e: `localhost:3000/v2/prescriptions`)
 
 
-### Testes de integração:
-+ Importar os arquivos dentro de tests\mocks para o mongoDB utilizando os seguintes comandos:
+### Automated Tests:
++ The automated tests were written using jest and supertest. To run them: :
+  - Run command `npm run test` on the project root folder
 
-  + `mongoimport --collection=physicians --db=prescriptions_test --file=tests\mocks\physicians.mock.json`
-
-  + `mongoimport --collection=clinics --db=prescriptions_test --file=tests\mocks\clinics.mock.json`
-
-  + `mongoimport --collection=patients --db=prescriptions_test --file=tests\mocks\patients.mock.json`
- 
 
 ___
 Atenciosamente,
 
 Ederson Sparenberger.
+
+
+[//]: #
+
+   [nodemon]: <https://www.npmjs.com/package/nodemon>
