@@ -14,7 +14,7 @@ describe('patients.controler', () => {
                 const res = await patientsControler.getPatient(mockedPatient.id);
                 expect([
                     200,
-                    defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code ])
+                    defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code])
                     .toContain(res.status);
                 expect(res.data).toHaveProperty('id', mockedPatient.id);
             });
@@ -24,23 +24,27 @@ describe('patients.controler', () => {
             const res = await patientsControler.getPatient(5646465);
             expect([
                 defaultMessages.api.v2.prescription.errors.patient_not_found.error.code,
-                defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code 
+                defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code
             ]).toContain(res.status);
-            expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.patient_not_found);
+            expect([
+                defaultMessages.api.v2.prescription.errors.patient_not_found,
+                defaultMessages.api.v2.prescription.errors.patients_service_not_available
+            ]).toContain(res.data);
         });
     });
 
     describe('requestPatientsAPI', () => {
-        mockPatients.forEach(mockedPatient => {
-            it(`should return an json with status 200. sample: ${JSON.stringify(mockedPatient)}`, async () => {
-                const res = await patientsControler.requestPatientsAPI(mockedPatient.id);
+        it(`should return an json with status 200 and either the response for service unavaliable or a response with the id property . sample: ${JSON.stringify(mockPatients[0])}`, async () => {
+            const res = await patientsControler.requestPatientsAPI(mockPatients[0].id);
+            expect([
+                200,
+                defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code])
+                .toContain(res.status);
                 expect([
-                    200,
-                    defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code ])
-                    .toContain(res.status);
-                expect(res.data).toHaveProperty('id', mockedPatient.id);
-            });
-        })
+                    'id',
+                    defaultMessages.api.v2.prescription.errors.patients_service_not_available
+                ]).toContain(res.data);
+        });
 
         it(`should return an empty message and a json with status ${defaultMessages.api.v2.prescription.errors.patient_not_found.error.code} (not found)  or ${defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code} (unavailable)`, async () => {
             const res = await patientsControler.requestPatientsAPI(5646465);
@@ -48,7 +52,10 @@ describe('patients.controler', () => {
                 defaultMessages.api.v2.prescription.errors.patient_not_found.error.code,
                 defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code])
                 .toContain(res.status);
-            expect(res).toHaveProperty('data', defaultMessages.api.v2.prescription.errors.patient_not_found);
+            expect([
+                defaultMessages.api.v2.prescription.errors.patient_not_found,
+                defaultMessages.api.v2.prescription.errors.patients_service_not_available
+            ]).toContain(res.data);
         });
 
         it(`should return and json with status ${defaultMessages.api.v2.prescription.errors.patients_service_not_available.error.code}  and the message ${JSON.stringify(defaultMessages.api.v2.prescription.errors.patients_service_not_available)}`, async () => {

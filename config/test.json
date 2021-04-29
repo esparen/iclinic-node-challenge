@@ -40,7 +40,7 @@
                 "default_headers": { 
                     "Authorization" : "Bearer SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
                 },
-                "retries": 5,
+                "retries": 2,
                 "timeout": 6000
             }
 
