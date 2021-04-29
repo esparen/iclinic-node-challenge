@@ -35,7 +35,7 @@
                 "cache_ttl" : 43200
             },
             "metrics": {
-                "baseURL" : "https://mysterious-island-73235.herokuapp.com/api",
+                "baseURL" : "https://5f71da6964a3720016e60ff8.mockapi.io/v1",
                 "path" : "/metrics",
                 "default_headers": { 
                     "Authorization" : "Bearer SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
